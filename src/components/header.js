@@ -5,13 +5,27 @@ import styled from 'styled-components'
 
 import Hamburger from '../assets/svg/hamburger.inline.svg'
 
+const H1 = styled.h1`
+  color: #003C48;
+  text-align: center;
+  margin: 1em 0 2em;
+  line-height: 1;
+
+  #small {
+    font-size: calc(21px + (28 - 21) * ((100vw - 300px) / (1900 - 300)));
+  }
+
+  #large {
+    font-size: calc(26px + (43 - 26) * ((100vw - 300px) / (1900 - 300)));
+  }
+`
+
 const Wrapper = styled.div`
   background-color: rgba(0, 0, 0, 0);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding: 1em;
 `
 const wrapper = 'lg:w-1/2';
 
@@ -19,9 +33,17 @@ const Links = styled.div.attrs(({ open }) => ({
   visibility: open ? 'visible' : 'hidden',
   transform: open ? `translateX(0%)` : `translateX(100%)`,
 }))`
-  /* Medium devices (tablets, less than 992px) */
-  @media (max-width: 1024px) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+
+  @media(max-width: 1024px) {
     font-size: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
     width: 40vw; height: 100vh;
     padding: 1rem;
     padding-top: 4rem;
@@ -30,6 +52,7 @@ const Links = styled.div.attrs(({ open }) => ({
     top: 0; right: 0;
     transform: ${props => props.transform};
     transition: all 200ms ease-in;
+    z-index: 10;
   }
 `
 
@@ -41,7 +64,7 @@ const HamburgerButton = (props) => {
   }
 
   return (
-    <div className="block ml-auto z-50 lg:hidden" style={{ gridArea: 'links' }}>
+    <div className="block ml-auto z-50 lg:hidden">
       <button className={hamburger} onClick={toggle}>
         <Hamburger className="fill-current h-3 w-3" />
       </button>
@@ -49,22 +72,16 @@ const HamburgerButton = (props) => {
   )
 }
 
-const links =
-  `text-white lg:text-black flex flex-col justify-start items-start bg-transblack z-10
-  lg:bg-transparent lg:flex-row lg:justify-between lg:items-center lg:visible`;
-
-const Header = (props) => {
+const Header = () => {
   const [open, setOpen] = useState(false);
 
   return(
     <nav className="fixed lg:relative w-full z-50">
+      <H1><span id="small">united</span><br /><span id="large">pool service</span></H1>
       <Wrapper className={wrapper}>
-        <span className="text-red-600 font-sans md:text-base text-lg whitespace-no-wrap hidden lg:inline">Company Logo</span>
-        <Links open={open} className={links}>
-          <div className="">
-            <Link className="block lg:inline lg:pr-2 lg:border-none border-b-2 border-white" activeClassName="active" to='/'>Home</Link>
-            <Link className="block lg:inline lg:pl-2" activeClassName="active" to='/contact/'>Contact</Link>
-          </div>
+        <Links open={open}>
+            <Link activeClassName="active" to='/'>Home</Link>
+            <Link activeClassName="active" to='/contact/'>Contact</Link>
         </Links>
         <HamburgerButton toggle={setOpen} state={open} />
       </Wrapper>

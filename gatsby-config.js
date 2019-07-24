@@ -36,7 +36,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Cinzel', 'Cormorant Garamond:mediumitalics']
+          families: ['Cinzel', 'Cormorant Garamond:semibolditalics']
         },
         custom: {
           families: ['']

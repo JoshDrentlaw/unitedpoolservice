@@ -11,21 +11,20 @@ import Facebook from '../assets/svg/facebook.inline.svg'
 
 
 const Background = styled.div`
-
+  font-family: Cinzel;
 `
 
 const Main = styled.main`
+  min-height: calc(100vh - (191px + 1em));
+  height: auto;
   position: relative;
-  max-height: calc(100vh - 112px);
   margin: 0 auto;
-  padding: 1rem;
   scroll-behavior: touch;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   width: 100%;
 
   @media (min-width: 1024px) {
-    min-height: calc(100vh - 112px);
     overflow: visible;
     width: 50%;
   }
@@ -33,17 +32,17 @@ const Main = styled.main`
 
 export const Container = styled.section`
     align-items: center;
+    border: ${props => props.border || 'none'};
     display: flex;
     height: ${props => props.heightSm || 'auto'};
     flex-direction: ${props => props.flexDirSm || 'column'};
-    justify-content: center;
+    justify-content: flex-start;
     margin: ${props => props.margin || '0'};
     padding: ${props => props.padding || '0'};
     width: 100%;
 
     @media(min-width: 1024px) {
-        flex-direction: ${props => props.flexDirLg || 'row'};
-        height: ${props => props.heightLg || '40vh'};
+        height: ${props => props.heightLg || 'auto'};
         justify-content: ${props => props.justifyLg || 'center'};
     }
 `
@@ -60,11 +59,8 @@ export const Socials = () => (
 )
 
 const Footer = () => (
-  <footer className="w-full text-center p-4 bg-black text-lightgrey z-50 fixed bottom-0 lg:relative lg:bottom-auto">
-    <div className="lg:w-1/2 mx-auto flex justify-between">
-      <div className="text-sm w-1/2">© {new Date().getFullYear()} </div>
-      <Socials />
-    </div>
+  <footer className="w-1/2 text-left p-4 pl-8 mx-auto bg-transparent text-grey z-50 fixed bottom-0 lg:relative lg:bottom-auto">
+    <div className="text-sm w-full">© {new Date().getFullYear()} United Pool Service</div>
   </footer>
 )
 

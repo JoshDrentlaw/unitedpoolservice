@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-boilerplate",
+  "name": "uniterpoolservice",
   "private": true,
-  "description": "My personal Gatsby boilerplate.",
+  "description": "Website for United Pool Service.",
   "version": "0.1.0",
   "author": "Josh Drentlaw <joshdrentlaw@gmail.com>",
   "dependencies": {
