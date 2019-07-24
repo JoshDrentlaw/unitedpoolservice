@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import styled from 'styled-components'
 
@@ -30,10 +30,11 @@ const VideoFrame = styled.div`
 const Row = styled.div`
   display: flex;
   width: 100%; height: 460px;
+`
 
-  div {
-    width: 100%; height: 100%;
-  }
+const UL = styled.ul`
+  color: white;
+  margin: auto auto;
 `
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
@@ -84,18 +85,40 @@ const IndexPage = () => {
         <H2>Family owned for over 30 years</H2>
         <Video videoSrcURL="https://player.vimeo.com/video/347850723" videoTitle="vimeo-player"></Video>
         <Row>
-          <Img
+          <BackgroundImage
             fluid={data.service1.childImageSharp.fluid}
             alt="Ground level shot of a pool and patio with fireplace."
-          />
-          <Img
+            wi
+          >
+            <UL>
+              <li>weekly service</li>
+              <li>weekly service</li>
+              <li>weekly service</li>
+              <li>weekly service</li>
+            </UL>
+          </BackgroundImage>
+          <BackgroundImage
             fluid={data.service2.childImageSharp.fluid}
             alt="Top view of ool water and a beach ball."
-          />
-          <Img
+          >
+            <UL>
+              <li>weekly service</li>
+              <li>weekly service</li>
+              <li>weekly service</li>
+              <li>weekly service</li>
+            </UL>
+          </BackgroundImage>
+          <BackgroundImage
             fluid={data.service3.childImageSharp.fluid}
             alt="Top view of pool stairs underwater."
-          />
+          >
+            <UL>
+              <li>weekly service</li>
+              <li>weekly service</li>
+              <li>weekly service</li>
+              <li>weekly service</li>
+            </UL>
+          </BackgroundImage>
         </Row>
       </Container>
     </Layout>
