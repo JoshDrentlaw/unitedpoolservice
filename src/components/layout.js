@@ -59,7 +59,7 @@ export const Socials = () => (
 )
 
 const Footer = () => (
-  <footer className="w-1/2 text-left p-4 pl-8 mx-auto bg-transparent text-grey z-50 fixed bottom-0 lg:relative lg:bottom-auto">
+  <footer className="w-full lg:w-1/2 text-left p-4 pl-8 mx-auto bg-transparent text-grey z-50 bottom-0 lg:bottom-auto">
     <div className="text-sm w-full">© {new Date().getFullYear()} United Pool Service</div>
   </footer>
 )
@@ -68,7 +68,7 @@ const Layout = ({ children }) => {
 
   return(
     <Background>
-      <div className="relative">
+      <div className="relative overflow-x-hidden">
         <div id="top"></div>
         <Header />
         <Main>{children}</Main>

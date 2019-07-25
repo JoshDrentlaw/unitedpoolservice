@@ -27,14 +27,33 @@ const VideoFrame = styled.div`
   }
 `
 
-const Row = styled.div`
+const Wrapper = styled.div`
   display: flex;
-  width: 100%; height: 460px;
+  flex-direction: column;
+  width: 100%; height: 675px;
+
+  @media(min-width: 1024px) {
+    flex-direction: row;
+    width: 100%; height: 460px;
+  }
+
+  /* BackgroundImage */
+  div {
+    width: 100%; height: 100%;
+    display: flex;
+  }
+
+  div:before {
+    filter: brightness(0.6);
+  }
 `
 
 const UL = styled.ul`
   color: white;
+  font-size: 16px;
+  line-height: 2.5;
   margin: auto auto;
+  list-style: disc outside;
 `
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
@@ -84,11 +103,10 @@ const IndexPage = () => {
       <Container border="1px solid #c8c8c8">
         <H2>Family owned for over 30 years</H2>
         <Video videoSrcURL="https://player.vimeo.com/video/347850723" videoTitle="vimeo-player"></Video>
-        <Row>
+        <Wrapper>
           <BackgroundImage
             fluid={data.service1.childImageSharp.fluid}
             alt="Ground level shot of a pool and patio with fireplace."
-            wi
           >
             <UL>
               <li>weekly service</li>
@@ -119,7 +137,7 @@ const IndexPage = () => {
               <li>weekly service</li>
             </UL>
           </BackgroundImage>
-        </Row>
+        </Wrapper>
       </Container>
     </Layout>
   )
