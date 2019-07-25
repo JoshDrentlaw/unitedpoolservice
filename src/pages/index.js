@@ -50,8 +50,9 @@ const Wrapper = styled.div`
 
 const UL = styled.ul`
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 2.5;
+  font-weight: 600;
   margin: auto auto;
   list-style: disc outside;
 `
@@ -110,9 +111,9 @@ const IndexPage = () => {
           >
             <UL>
               <li>weekly service</li>
-              <li>weekly service</li>
-              <li>weekly service</li>
-              <li>weekly service</li>
+              <li>repairs</li>
+              <li>automatic cleaners</li>
+              <li>acid wash</li>
             </UL>
           </BackgroundImage>
           <BackgroundImage
@@ -120,10 +121,10 @@ const IndexPage = () => {
             alt="Top view of ool water and a beach ball."
           >
             <UL>
-              <li>weekly service</li>
-              <li>weekly service</li>
-              <li>weekly service</li>
-              <li>weekly service</li>
+              <li>riverside</li>
+              <li>corona</li>
+              <li>woodcreat</li>
+              <li>mira loma</li>
             </UL>
           </BackgroundImage>
           <BackgroundImage
@@ -131,10 +132,10 @@ const IndexPage = () => {
             alt="Top view of pool stairs underwater."
           >
             <UL>
-              <li>weekly service</li>
-              <li>weekly service</li>
-              <li>weekly service</li>
-              <li>weekly service</li>
+              <li>pet friendly</li>
+              <li>residential</li>
+              <li>family owned</li>
+              <li>free estimates</li>
             </UL>
           </BackgroundImage>
         </Wrapper>
