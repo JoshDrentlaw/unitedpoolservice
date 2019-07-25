@@ -59,7 +59,7 @@ export const Socials = () => (
 )
 
 const Footer = () => (
-  <footer className="w-full lg:w-1/2 text-left p-4 pl-8 mx-auto bg-transparent text-grey z-50 bottom-0 lg:bottom-auto">
+  <footer className="w-full lg:w-1/2 text-left p-4 pl-8 mx-auto mb-12 lg:mb-0 bg-transparent text-grey z-50 bottom-0 lg:bottom-auto">
     <div className="text-sm w-full">© {new Date().getFullYear()} United Pool Service</div>
   </footer>
 )
