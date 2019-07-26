@@ -17,8 +17,8 @@ const Wrapper = styled.div`
         display: grid;
         grid-template-areas: "header image"
                             "form image";
-        grid-template-columns: auto 400px;
-        grid-template-rows: auto auto;
+        grid-template-columns: auto minmax(200px, 400px);
+        grid-template-rows: calc(36px + 1em) auto;
     }
 `
 
@@ -31,6 +31,7 @@ const H2 = styled.h2`
 
 const Form = styled.form`
     grid-area: form;
+    width: 100%;
 `
 
 const Image = styled(Img)`
