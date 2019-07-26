@@ -9,12 +9,16 @@ import SEO from "../components/seo"
 
 const Wrapper = styled.div`
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-evenly;
     width: 100%; height: 100%;
 
     @media(min-width: 1024px) {
-        flex-direction: row;
+        display: grid;
+        grid-template-areas: "header image"
+                            "form image";
+        grid-template-columns: auto 400px;
+        grid-template-rows: auto auto;
     }
 `
 
@@ -22,6 +26,18 @@ const H2 = styled.h2`
     color: #72D2E5;
     font-size: 32px;
     margin-bottom: 1em;
+    grid-area: header;
+`
+
+const Form = styled.form`
+    grid-area: form;
+`
+
+const Image = styled(Img)`
+    grid-area: image;
+    width: 100%; height: 100%;
+    max-width: 400px;
+    max-height: 400px;
 `
 
 const ContactPage = () => {
@@ -40,13 +56,21 @@ const ContactPage = () => {
     return (
         <Layout>
             <SEO title="Contact" />
-            <Container border="1px solid #c8c8c8" padding="2em">
+            <Container border="1px solid #c8c8c8" padding="1em">
                 <Wrapper>
-                    <form>
-                        <H2>contact</H2>
-
-                    </form>
-                    <Img fluid={data.file.childImageSharp.fluid} alt="Pool cleaning hose and scruber going into a pool." />
+                    <H2>contact</H2>
+                    <Image fluid={data.file.childImageSharp.fluid} alt="Pool cleaning hose and scruber going into a pool." />
+                    <Form>
+                        <fieldset name="fullName">
+                            <input placeholder="First Name" />
+                            <input placeholder="Last Name" />
+                        </fieldset>
+                        <fieldset name="info">
+                            <input placeholder="Email" />
+                            <input placeholder="Phone Number" />
+                        </fieldset>
+                        <textarea rows="3" placeholder="Type your message here..."></textarea>
+                    </Form>
                 </Wrapper>
             </Container>
         </Layout>

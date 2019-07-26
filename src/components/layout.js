@@ -11,6 +11,7 @@ import Facebook from '../assets/svg/facebook.inline.svg'
 
 
 const Background = styled.div`
+  background-color: #fbfbfb;
   font-family: Cinzel;
 `
 
