@@ -76,21 +76,21 @@ const IndexPage = () => {
     {
       service1: file(relativePath: {eq: "images/service1.webp"}) {
         childImageSharp {
-          fluid {
+          fluid(quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       service2: file(relativePath: {eq: "images/service2.webp"}) {
         childImageSharp {
-          fluid {
+          fluid(quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       service3: file(relativePath: {eq: "images/service3.webp"}) {
         childImageSharp {
-          fluid {
+          fluid(quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }

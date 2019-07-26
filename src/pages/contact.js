@@ -136,7 +136,7 @@ const ContactPage = () => {
         {
             file(relativePath: {eq: "images/contact-hose.webp"}) {
                 childImageSharp {
-                    fluid(maxWidth: 400, maxHeight: 375) {
+                    fluid(maxWidth: 400, maxHeight: 375, quality: 90) {
                         ...GatsbyImageSharpFluid
                     }
                 }
@@ -151,7 +151,8 @@ const ContactPage = () => {
                 <Wrapper>
                     <H2>contact</H2>
                     <Image fluid={data.file.childImageSharp.fluid} alt="Pool cleaning hose and scruber going into a pool." />
-                    <Form id="contact" method="post" name="contact">
+                    <Form id="contact" method="post" name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact" />
                         <FieldSet name="Full Name">
                             <Input
                                 label="First name"
@@ -185,10 +186,10 @@ const ContactPage = () => {
                             name="Awareness"
                         >
                             <Option>How did you hear about us?</Option>
-                            <Option>Referal</Option>
-                            <Option>Social Media</Option>
-                            <Option>Internet Search</Option>
-                            <Option>Other</Option>
+                            <Option value="referal">Referal</Option>
+                            <Option value="social media">Social Media</Option>
+                            <Option value="internet search">Internet Search</Option>
+                            <Option value="other">Other</Option>
                         </Select>
                         <Button form="contact" name="submit" type="submit">Submit</Button>
                     </Form>
