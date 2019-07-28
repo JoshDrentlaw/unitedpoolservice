@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import styled from 'styled-components'
 
@@ -73,6 +74,10 @@ const Input = (props) => (
         placeholder={props.placeholder}
         required={props.required}
         type={props.type}
+        value={props.value}
+        onChange={(e) => {
+            props.setter(e.target.value)
+        }}
     />
 )
 
@@ -131,7 +136,13 @@ const Image = styled(Img)`
     }
 `
 
-const ContactPage = () => {
+const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
+
+const ContactPage = (props) => {
     const data = useStaticQuery(graphql`
         {
             file(relativePath: {eq: "images/contact-hose.webp"}) {
@@ -143,28 +154,64 @@ const ContactPage = () => {
             }
         }
     `)
+    const [fname, setFname] = useState("")
+    const [lname, setLname] = useState("")
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
+    const [message, setMessage] = useState("")
+    const [awareness, setAwareness] = useState("")
+
+    const handleSubmit = (e) => {
+        fetch("/contact/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({
+                "form-name": "contact",
+                "First name": fname,
+                "Last name": lname,
+                "Email": email,
+                "Phone number": phone,
+                "Message": message,
+                "Awareness": awareness
+            })
+        })
+            .then(data => {
+                if (data.status === 200) {
+                    console.log('Success')
+                }
+            })
+            .catch(error => alert(error))
+
+        e.preventDefault()
+    }
 
     return (
         <Layout>
-            <SEO title="Contact" />
+            <SEO 
+                title="Contact"
+                description="United Pool Service is always looking for new customers. If you like what you see, please get in touch with us."
+            />
             <Container border="1px solid #c8c8c8" padding="1em">
                 <Wrapper>
                     <H2>contact</H2>
                     <Image fluid={data.file.childImageSharp.fluid} alt="Pool cleaning hose and scruber going into a pool." />
-                    <Form id="contact" method="post" name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contact" />
+                    <Form id="contact" name="contact" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit}>
                         <FieldSet name="Full Name">
                             <Input
                                 label="First name"
                                 placeholder="First Name"
                                 required="required"
                                 type="text"
+                                setter={setFname}
+                                value={fname}
                             />
                             <Input
                                 label="Last name"
                                 placeholder="Last Name"
                                 required="required"
                                 type="text"
+                                setter={setLname}
+                                value={lname}
                             />
                         </FieldSet>
                         <FieldSet name="Personal Info">
@@ -173,17 +220,30 @@ const ContactPage = () => {
                                 placeholder="Email"
                                 required="required"
                                 type="email"
+                                setter={setEmail}
+                                value={email}
                             />
                             <Input
                                 label="Phone number"
                                 placeholder="Phone Number"
                                 type="tel"
+                                setter={setPhone}
+                                value={phone}
                             />
                         </FieldSet>
-                        <Textarea name="Message" rows="5" placeholder="Type your message here..." />
+                        <Textarea
+                            name="Message"
+                            rows="5"
+                            placeholder="Type your message here..."
+                            onChange={(e) => {
+                                setMessage(e.target.value)
+                            }} />
                         <Select
                             form="contact"
                             name="Awareness"
+                            onChange={(e) => {
+                                setAwareness(e.target.value)
+                            }}
                         >
                             <Option>How did you hear about us?</Option>
                             <Option value="referal">Referal</Option>
