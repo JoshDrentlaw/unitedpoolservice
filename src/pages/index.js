@@ -123,7 +123,7 @@ const IndexPage = () => {
             <UL>
               <li>riverside</li>
               <li>corona</li>
-              <li>woodcreat</li>
+              <li>woodcrest</li>
               <li>mira loma</li>
             </UL>
           </BackgroundImage>
